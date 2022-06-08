@@ -1,0 +1,45 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+# --------------------------------------------------------------------------
+require $ARGV[0];
+# --------------------------------------------------------------------------
+
+our $xmlhed='<?xml version="1.0" encoding="utf-8"?>';
+our $xmltop='common';
+
+my ($strxml,$strget,$strpos,$qryelm,$qrykey,$qryval,@lstget,@lstpos,@lstqry);
+
+$strget=$ENV{'QUERY_STRING'};
+@lstget=split('&',$strget);
+if ($ENV{'REQUEST_METHOD'} eq 'POST') {
+  read(STDIN,$strpos,$ENV{'CONTENT_LENGTH'});
+}
+else {
+  $strpos=''
+}
+@lstpos=split('&',$strpos);
+@lstqry=(@lstget,@lstpos);
+$strxml="${xmlhed}\n";
+$strxml=$strxml."<${xmltop}>\n";
+# --------------------------------------------------------------------------
+Getweb::iniitm();
+# --------------------------------------------------------------------------
+foreach $qryelm (@lstqry) {
+  ($qrykey,$qryval)=split('=',$qryelm);
+  $qrykey=~tr/+/ /;
+  $qrykey=~s/%([\dA-Fa-f][\dA-Fa-f])/pack('C',hex($1))/eg;
+  $qryval=~tr/+/ /;
+  $qryval=~s/%([\dA-Fa-f][\dA-Fa-f])/pack('C',hex($1))/eg;
+# --------------------------------------------------------------------------
+  ($qrykey,$qryval,$strxml)=Getweb::chkitm($qrykey,$qryval,$strxml);
+# --------------------------------------------------------------------------
+  $strxml=$strxml."<${qrykey}>${qryval}</${qrykey}>\n";
+}
+# --------------------------------------------------------------------------
+$strxml=Getweb::enditm($strxml);
+# --------------------------------------------------------------------------
+$strxml=$strxml."</${xmltop}>\n";
+print($strxml);

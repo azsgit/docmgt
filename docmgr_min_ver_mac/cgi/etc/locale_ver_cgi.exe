@@ -1,0 +1,7 @@
+#!/bin/sh
+
+dirtop='/opt'
+dirtmp='/tmp' ; export dirtmp
+urltop='/cgi/' ; export urltop
+
+. $dirtop/xoxxox/docmgr_min/etc/locale_cgi.exe

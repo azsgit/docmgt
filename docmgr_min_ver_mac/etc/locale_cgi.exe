@@ -1,0 +1,13 @@
+#!/bin/sh
+
+#dircrr=`dirname  $0`
+dircrr=$(cd $(dirname $0) ; pwd)
+dircgi=`dirname  $dircrr`
+namprj=`basename $dircgi` ; export namprj
+dirlib="$dirtop/xoxxox"   ; export dirlib
+dirprj="$dirtop/$namprj"  ; export dirprj
+urlprj="$urltop$namprj/"  ; export urlprj
+urlweb="/$namprj/"        ; export urlweb
+dirbin="$dirlib/docmgr_min/bin"
+
+PATH=$PATH:$dirbin

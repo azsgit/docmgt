@@ -1,0 +1,3 @@
+process {
+  $_ | Invoke-Expression
+}

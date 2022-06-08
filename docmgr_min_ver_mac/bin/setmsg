@@ -1,0 +1,3 @@
+#!/bin/sh
+
+#cat | sendmail -i -t

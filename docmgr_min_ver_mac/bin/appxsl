@@ -1,0 +1,13 @@
+#!/bin/sh
+
+target=$1
+
+lstarg=`echo $2 | tr ',' '\n'` # a=x,b=y,...
+#lstarg=${@:2}
+lstopt=()
+
+for elmarg in ${lstarg} ; do
+  lstopt=("${lstopt[@]}" '-stringparam '`echo ${elmarg} | sed 's/=/ /'`)
+done
+
+xsltproc ${lstopt[@]} ${target} -

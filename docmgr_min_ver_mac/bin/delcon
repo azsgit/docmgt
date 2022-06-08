@@ -1,0 +1,5 @@
+#!/bin/sh
+
+target=$1
+
+rm -f ${target}

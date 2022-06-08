@@ -1,0 +1,9 @@
+#!/bin/sh
+
+dirprj=`dirname $dircrr` ; export dirprj
+dirtop=`dirname $dirprj`
+dirlib="$dirtop/xoxxox"  ; export dirlib
+dirbin="$dirlib/docmgr_min/bin"
+dirtmp='/tmp' ; export dirtmp
+
+PATH=$PATH:$dirbin

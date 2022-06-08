@@ -1,0 +1,16 @@
+#!/bin/sh
+
+target=$1
+
+tmpsrc=${dirtmp}/catxml_tmpsrc_$$.txt
+tmpdst=${dirtmp}/catxml_tmpdst_$$.txt
+
+cat | xsltproc ${dirlib}/docmgr_min/etc/catxml.xsl - > ${tmpsrc}
+/bin/echo -n ${target} | sh - | xsltproc ${dirlib}/docmgr_min/etc/catxml.xsl - > ${tmpdst}
+
+/bin/echo '<common>'
+cat ${tmpsrc} ${tmpdst}
+/bin/echo '</common>'
+
+rm -f ${tmpsrc}
+rm -f ${tmpdst}

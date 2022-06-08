@@ -1,0 +1,7 @@
+#!/bin/sh
+
+/bin/echo '<common>'
+/bin/echo -n '<moment xmlns="http://common.xoxxox.net/xexstd">'
+/bin/echo -n `date +'%Y-%m-%d %H:%M:%S'`
+/bin/echo '</moment>'
+/bin/echo '</common>'

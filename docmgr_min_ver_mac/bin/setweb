@@ -1,0 +1,30 @@
+#!/bin/sh
+
+typemd=$1
+
+headmd='content-type: text/html'
+if test "${typemd}" = 't'
+then
+  headmd='content-type: text/plain'
+fi
+if test "${typemd}" = 'x'
+then
+  headmd='content-type: application/xml'
+fi
+if test "${typemd}" = 'm'
+then
+  headmd='content-type: application/xhtml+xml'
+fi
+if test "${typemd}" = 'h'
+then
+  headmd='content-type: text/html'
+fi
+if test "${typemd}" = 'j'
+then
+  headmd='content-type: applecation/json'
+fi
+
+echo 'Access-Control-Allow-Origin: *'
+echo "${headmd}; charset=utf-8"
+echo ''
+cat

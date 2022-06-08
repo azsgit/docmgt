@@ -1,0 +1,15 @@
+#!/bin/sh
+
+lstarg=($@)
+
+/bin/echo '<common>'
+for folder in ${lstarg[@]}
+do
+  if test -f ${folder}
+  then
+    /bin/echo -n '<folder xmlns="http://common.xoxxox.net/xexstd">'
+    /bin/echo -n ${folder}
+    /bin/echo '</folder>'
+  fi
+done
+/bin/echo '</common>'

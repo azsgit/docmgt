@@ -1,0 +1,8 @@
+#!/bin/sh
+
+/bin/echo '<common>'
+/bin/echo -n '<unique xmlns="http://common.xoxxox.net/xexstd">'
+/bin/echo -n `date +'%Y%m%d%H%M%S'`
+/bin/echo -n `jot -r 1 10 99`
+/bin/echo '</unique>'
+/bin/echo '</common>'

@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use CGI;
+
+my $namarc=$ARGV[0];
+my ($webmgr,$objarc,$buffer);
+
+$webmgr=new CGI;
+$objarc=$webmgr->param($namarc);
+while (read($objarc,$buffer,1024)) {
+  print $buffer;
+}

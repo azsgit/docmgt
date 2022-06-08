@@ -1,0 +1,5 @@
+#!/bin/sh
+
+target=$1
+
+cat > ${dirtmp}/tmpvar_${numprc}_${target}.txt
